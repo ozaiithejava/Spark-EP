@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation</title>
+</head>
+<body>
+    <h2>Form</h2>
+    <form method="post" action="/process-form">
+        <label>Name: <input type="text" name="name" th:value="${person?.name}" /></label><br>
+        <label>Age: <input type="number" name="age" th:value="${person?.age}" /></label><br>
+        <label>Email: <input type="text" name="email" th:value="${person?.email}" /></label><br>
+        <button type="submit">Submit</button>
+    </form>
+    <div th:if="${errors}">
+        <h3>Validation Errors:</h3>
+        <ul>
+            <li th:each="error : ${errors}" th:text="${error.message}"></li>
+        </ul>
+    </div>
+</body>
+</html>
